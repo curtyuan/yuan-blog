@@ -1,0 +1,6 @@
+baseURL = "https://example.com/blog"
+languageCode = "en-us"
+title = "My Blog"
+theme = "PaperMod"
+contentDir = "content-blog"
+publishDir = "public/blog"

@@ -1,0 +1,7 @@
+baseURL = "https://example.com/terminal"
+languageCode = "en-us"
+title = "Terminal CV"
+theme = "terminalcv"
+contentDir = "content-terminal"
+publishDir = "public/terminal"
+
