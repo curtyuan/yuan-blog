@@ -47,6 +47,7 @@ jobs:
       - name: Build Terminal CV
         run: |
           hugo --config config/terminal/config.toml \
+          --baseURL https://0xo3o.com/terminal \
           --minify \
           --gc \
           --enableGitInfo
@@ -54,6 +55,7 @@ jobs:
       - name: Build Blog
         run: |
           hugo --config config/blog/config.toml \
+          --baseURL https://0xo3o.com/blog \
           --minify \
           --gc \
           --enableGitInfo

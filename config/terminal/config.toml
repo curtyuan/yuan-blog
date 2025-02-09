@@ -1,7 +1,9 @@
-baseURL = "https://example.com/terminal"
+baseURL = "http://localhost:1313/terminal"  # default for local development
 languageCode = "en-us"
 title = "Terminal CV"
 theme = "terminalcv"
 contentDir = "content-terminal"
 publishDir = "public/terminal"
+enableRobotsTXT = true
+canonifyURLs = false
 

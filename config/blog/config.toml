@@ -1,6 +1,89 @@
-baseURL = "https://example.com/blog"
+# Basic Configuration
+baseURL = "http://localhost:1313/blog"  # default for local development
 languageCode = "en-us"
-title = "My Blog"
+title = "0xo3o"
 theme = "PaperMod"
+
+# Content and Output
 contentDir = "content-blog"
 publishDir = "public/blog"
+enableRobotsTXT = true
+canonifyURLs = false
+
+# Theme Parameters
+[params]
+  env = "production"
+  defaultTheme = "auto"
+  
+  # Profile Mode
+  [params.profileMode]
+    enabled = true
+    title = "0xo3o"
+    subtitle = "Welcome to my blog!"
+    imageUrl = "/blog/img/profile.jpg"
+    imageTitle = "my picture"
+    imageWidth = 150     # Default size matching desktop CSS
+    imageHeight = 150
+    imageClass = "img-circle"
+    buttons = [
+      { name = "Posts", url = "posts" },
+      { name = "About Me", url = "about" },
+      { name = "Tags", url = "tags" }
+    ]
+
+  # UI Settings
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+
+  # Asset Settings
+  [params.assets]
+    disableScrollBarStyle = true
+    disableFingerprinting = true
+
+# Main Menu Items
+[[menu.main]]
+  identifier = "about"
+  name = "About Me"
+  url = "/about/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "tech"
+  name = "Tech"
+  url = "/categories/tech/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "life"
+  name = "Life"
+  url = "/categories/life/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "tutorials"
+  name = "Tutorials"
+  url = "/categories/tutorials/"
+  weight = 40
+
+# 修改資源處理部分
+[module]
+  [[module.mounts]]
+    source = "themes/PaperMod/assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+
+# 確保資源正確處理
+[build]
+  writeStats = true
+  [[build.mounts]]
+    source = "themes/PaperMod/assets"
+    target = "static/assets"
+  
