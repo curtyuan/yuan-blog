@@ -16,6 +16,9 @@ theme = "PaperMod"
   [[module.mounts]]
     source = "themes/PaperMod/assets"
     target = "assets"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
 
 # Theme-specific configurations
 [params]
@@ -45,10 +48,15 @@ theme = "PaperMod"
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
 
-  # Asset Settings (Added from blog-config)
+  # Asset Settings
   [params.assets]
     disableScrollBarStyle = true
     disableFingerprinting = true
+    favicon = "/favicon.ico"
+    favicon16x16 = "/favicon-16x16.png"
+    favicon32x32 = "/favicon-32x32.png"
+    apple_touch_icon = "/apple-touch-icon.png"
+    safari_pinned_tab = "/safari-pinned-tab.svg"
 
 # Main Menu Items (Added from blog-config)
 [[menu.main]]
