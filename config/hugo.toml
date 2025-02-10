@@ -1,26 +1,23 @@
 # Basic Configuration
-baseURL = "http://localhost:1313/blog"
+baseURL = "http://localhost:1313"
 languageCode = "en-us"
-title = "Yuan's Blog"
-theme = "PaperMod"
-
-# Content and Output
-contentDir = "content/blog"
-publishDir = "public/blog"
 enableRobotsTXT = true
 canonifyURLs = false
-uglyURLs = false
-urlPrefix = "blog"
+theme = "PaperMod"
 
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-  section = ["HTML"]
+# Content and Output Configuration
+[module]
+  [[module.mounts]]
+    source = "content/blog"
+    target = "content"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "themes/PaperMod/assets"
+    target = "assets"
 
-# Root URL redirect
-[server]
-  appendPort = true
-
-# Theme Parameters
+# Theme-specific configurations
 [params]
   env = "development"
   defaultTheme = "auto"
@@ -30,7 +27,7 @@ urlPrefix = "blog"
     enabled = true
     title = "0xo3o"
     subtitle = "Welcome to my blog!"
-    imageUrl = "/blog/img/profile.jpg"
+    imageUrl = "/img/profile.jpg"
     imageTitle = "my picture"
     imageWidth = 150
     imageHeight = 150
@@ -41,19 +38,19 @@ urlPrefix = "blog"
       { name = "Tags", url = "tags" }
     ]
 
-  # UI Settings
+  # UI Settings (Added from blog-config)
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
 
-  # Asset Settings
+  # Asset Settings (Added from blog-config)
   [params.assets]
     disableScrollBarStyle = true
     disableFingerprinting = true
 
-# Main Menu Items
+# Main Menu Items (Added from blog-config)
 [[menu.main]]
   identifier = "about"
   name = "About Me"
@@ -78,38 +75,6 @@ urlPrefix = "blog"
   url = "/blog/categories/tutorials/"
   weight = 40
 
-# Resource Handling
-[[module.mounts]]
-  source = "content/blog"
-  target = "content"
-
-[[module.mounts]]
-  source = "static"
-  target = "static"
-
-[[module.mounts]]
-  source = "themes/PaperMod/assets"
-  target = "assets"
-
-[[module.mounts]]
-  source = "assets"
-  target = "assets"
-
-# Ensure correct resource handling
-[build]
-  writeStats = true
-  [[build.mounts]]
-    source = "themes/PaperMod/assets"
-    target = "static/assets"
-
-# Production URL Configuration
-[deployment]
-  [[deployment.targets]]
-    name = "production"
-    URL = "https://0xo3o.com/blog"
-
-  [[deployment.matchers]]
-    pattern = "^HUGO_ENV=production$"
-    URL = "https://0xo3o.com/blog"
-
-
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML"] 

@@ -1,9 +1,11 @@
-baseURL = "http://localhost:1313/terminal"  # Local development URL
-languageCode = "en-us"
-title = "Terminal CV"
+# Basic Configuration
+baseURL = "http://localhost:1313/terminal"
 theme = "terminalcv"
-contentDir = "content-terminal"
+contentDir = "content/terminal"
 publishDir = "public/terminal"
-enableRobotsTXT = true
-canonifyURLs = false
+
+[module]
+  [[module.mounts]]
+    source = "content/terminal"
+    target = "content"
 

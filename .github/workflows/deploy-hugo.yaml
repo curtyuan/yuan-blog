@@ -48,7 +48,8 @@ jobs:
         env:
           HUGO_ENV: production
         run: |
-          hugo --config config/blog-config.toml \
+          hugo --config config/hugo.toml \
+          --baseURL https://0xo3o.com \
           --minify \
           --gc \
           --enableGitInfo
@@ -58,18 +59,10 @@ jobs:
           HUGO_ENV: production
         run: |
           hugo --config config/terminal-config.toml \
+          --baseURL https://0xo3o.com/terminal \
           --minify \
           --gc \
           --enableGitInfo
-
-      # Copy the redirect file to the root of the public directory (if it exists)
-      - name: Copy redirect file
-        run: |
-          if [ -f public/blog/_redirects ]; then
-            cp public/blog/_redirects public/_redirects
-          else
-            echo "/ /blog/ 301!" > public/_redirects
-          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
