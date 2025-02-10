@@ -1,4 +1,4 @@
-baseURL = "http://localhost:1313/terminal"  # default for local development
+baseURL = "http://localhost:1313/terminal"  # Local development URL
 languageCode = "en-us"
 title = "Terminal CV"
 theme = "terminalcv"

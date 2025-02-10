@@ -1,5 +1,5 @@
 # Basic Configuration
-baseURL = "http://localhost:1313/blog"  # default for local development
+baseURL = "http://localhost:1313/blog"  # Local development URL
 languageCode = "en-us"
 title = "0xo3o"
 theme = "PaperMod"
@@ -12,13 +12,13 @@ canonifyURLs = false
 
 # Theme Parameters
 [params]
-  env = "production"
+  env = "development"  # This replaces HUGO_ENV
   defaultTheme = "auto"
   
   # Profile Mode
   [params.profileMode]
     enabled = true
-    title = "0xo3o"
+    title = "0xo3o"  # that's exactly what i need.
     subtitle = "Welcome to my blog!"
     imageUrl = "/blog/img/profile.jpg"
     imageTitle = "my picture"
@@ -47,13 +47,13 @@ canonifyURLs = false
 [[menu.main]]
   identifier = "about"
   name = "About Me"
-  url = "/about/"
+  url = "/blog/about/"
   weight = 10
 
 [[menu.main]]
   identifier = "tech"
   name = "Tech"
-  url = "/categories/tech/"
+  url = "/blog/categories/tech/"
   weight = 20
 
 [[menu.main]]
@@ -69,16 +69,17 @@ canonifyURLs = false
   weight = 40
 
 # 修改資源處理部分
-[module]
-  [[module.mounts]]
-    source = "themes/PaperMod/assets"
-    target = "assets"
-  [[module.mounts]]
-    source = "assets"
-    target = "assets"
-  [[module.mounts]]
-    source = "static"
-    target = "static"
+[[module.mounts]]
+source = "themes/PaperMod/assets"
+target = "assets"
+
+[[module.mounts]]
+source = "assets"
+target = "assets"
+
+[[module.mounts]]
+source = "static"
+target = "static"
 
 # 確保資源正確處理
 [build]
@@ -86,4 +87,34 @@ canonifyURLs = false
   [[build.mounts]]
     source = "themes/PaperMod/assets"
     target = "static/assets"
+
+# Add this section to handle the root URL redirect
+[outputs]
+  home = ["HTML", "RSS", "JSON", "REDIRECTS"]
+
+[mediaTypes]
+  [mediaTypes."text/netlify"]
+    delimiter = ""
+
+[outputFormats]
+  [outputFormats.REDIRECTS]
+    mediaType = "text/netlify"
+    baseName = "_redirects"
+    isPlainText = true
+    notAlternative = true
+
+[[redirects]]
+  from = "/"
+  to = "/blog/"
+  status = 301
+  force = true
+
+[deployment]
+  [[deployment.targets]]
+    name = "production"
+    URL = "https://0xo3o.com/blog"
+
+  [[deployment.matchers]]
+    pattern = "^HUGO_ENV=production$"
+    URL = "https://0xo3o.com/blog"
   

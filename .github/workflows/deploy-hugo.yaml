@@ -44,21 +44,18 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
-      - name: Build Terminal CV
+      - name: Build Blog
+        env:
+          HUGO_ENV: production
         run: |
-          hugo --config config/terminal/config.toml \
-          --baseURL https://0xo3o.com/terminal \
+          hugo --config config/blog/config.toml \
           --minify \
           --gc \
           --enableGitInfo
 
-      - name: Build Blog
-        run: |
-          hugo --config config/blog/config.toml \
-          --baseURL https://0xo3o.com/blog \
-          --minify \
-          --gc \
-          --enableGitInfo
+      # Copy the redirect file to the root of the public directory
+      - name: Copy redirect file
+        run: cp public/blog/_redirects public/_redirects
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
