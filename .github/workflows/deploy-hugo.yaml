@@ -48,7 +48,16 @@ jobs:
         env:
           HUGO_ENV: production
         run: |
-          hugo --config config/blog/config.toml \
+          hugo --config config/blog-config.toml \
+          --minify \
+          --gc \
+          --enableGitInfo
+
+      - name: Build Terminal
+        env:
+          HUGO_ENV: production
+        run: |
+          hugo --config config/terminal-config.toml \
           --minify \
           --gc \
           --enableGitInfo
