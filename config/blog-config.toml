@@ -95,6 +95,7 @@ target = "static"
 [mediaTypes]
   [mediaTypes."text/netlify"]
     delimiter = ""
+    suffixes = [""]
 
 [outputFormats]
   [outputFormats.REDIRECTS]

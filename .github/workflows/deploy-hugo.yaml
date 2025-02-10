@@ -62,9 +62,14 @@ jobs:
           --gc \
           --enableGitInfo
 
-      # Copy the redirect file to the root of the public directory
+      # Copy the redirect file to the root of the public directory (if it exists)
       - name: Copy redirect file
-        run: cp public/blog/_redirects public/_redirects
+        run: |
+          if [ -f public/blog/_redirects ]; then
+            cp public/blog/_redirects public/_redirects
+          else
+            echo "/ /blog/ 301!" > public/_redirects
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
